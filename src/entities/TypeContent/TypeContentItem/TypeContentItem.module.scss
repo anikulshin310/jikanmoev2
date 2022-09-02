@@ -1,0 +1,22 @@
+.TypeContentItem {
+  flex: 0 1 220px;
+  margin: auto;
+  background-color: #ffb34e;
+  margin: 5px;
+  text-align: center;
+
+  -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  .TypeContentItemTitle {
+    padding-left: 5px;
+    line-height: 28px;
+    overflow: hidden;
+    height: 35px;
+    align-items: center;
+    color: #2f2f2f;
+  }
+  img {
+    width: 220px;
+    height: 350px;
+  }
+}

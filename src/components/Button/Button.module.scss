@@ -1,0 +1,18 @@
+.button {
+  width: 112px;
+  min-height: 60px;
+  color: #ffb34e;
+  background-color: #2f2f2f;
+  border: 0;
+  cursor: pointer;
+  &:hover {
+    background-color: #ffb34e;
+    color: #2f2f2f;
+  }
+}
+
+.buttonActive {
+  @extend .button;
+  color: #2f2f2f;
+  background-color: #ffb34e;
+}

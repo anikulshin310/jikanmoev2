@@ -1,0 +1,26 @@
+.headerWrapper {
+  background-color: #2f2f2f;
+}
+.header {
+  display: flex;
+  margin: auto;
+  justify-content: space-between;
+}
+
+@media (min-width: 768px) {
+  .header {
+    width: 750px;
+  }
+}
+
+@media (min-width: 992px) {
+  .header {
+    width: 970px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .header {
+    width: 1170px;
+  }
+}

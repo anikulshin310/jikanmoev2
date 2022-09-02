@@ -1,0 +1,19 @@
+.search {
+  width: 70%;
+  margin-right: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .searchInput {
+    height: 30px;
+    font-size: 18px;
+    width: 100%;
+    box-sizing: content-box;
+    display: block;
+    border: 1px solid #f59a23;
+    color: #f59a23;
+    background-color: #2f2f2f;
+    outline: none;
+  }
+}

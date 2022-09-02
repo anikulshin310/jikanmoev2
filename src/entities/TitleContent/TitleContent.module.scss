@@ -1,0 +1,29 @@
+.TitleContent {
+  margin: auto;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+
+  .TitleContentInner {
+    display: flex;
+    background-color: #ffb34e;
+  }
+}
+
+@media (min-width: 768px) {
+  .TitleContent {
+    width: 750px;
+  }
+}
+
+@media (min-width: 992px) {
+  .TitleContent {
+    width: 970px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .TitleContent {
+    width: 1170px;
+  }
+}

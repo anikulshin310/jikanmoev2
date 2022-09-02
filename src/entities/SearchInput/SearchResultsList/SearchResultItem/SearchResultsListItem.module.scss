@@ -1,0 +1,31 @@
+.SearchResultsListItem {
+  display: flex;
+  margin-bottom: 3px;
+
+  h4,
+  h5 {
+    margin: 0;
+  }
+  img {
+    margin-left: 10px;
+    margin-right: 20px;
+    height: 75px;
+    width: 48px;
+  }
+
+  .title {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    width: 50%;
+  }
+  .info {
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    justify-content: space-between;
+    width: 150px;
+    margin-bottom: 10px;
+  }
+}

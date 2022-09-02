@@ -1,0 +1,34 @@
+.TitleContentScore {
+  display: flex;
+  width: 200px;
+  margin-top: 7px;
+  margin-left: 12px;
+
+  .stars {
+    position: relative;
+    width: 100%;
+    svg {
+      width: 40px;
+    }
+  }
+
+  .cover {
+    background: white;
+    height: 100%;
+    overflow: hidden;
+    mix-blend-mode: color;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  svg {
+    fill: #ffb34e;
+  }
+  .score {
+    margin-top: 7px;
+    display: flex;
+    justify-content: center;
+    line-height: 30px;
+    font-weight: 700;
+  }
+}

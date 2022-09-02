@@ -1,0 +1,32 @@
+.searchResults {
+  position: relative;
+  width: 100%;
+
+  ul {
+    position: absolute;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    overflow-y: scroll;
+    width: 100%;
+    list-style-type: none;
+    background-color: #2f2f2f;
+    border: 1px solid #f59a23;
+    border-top: none;
+    max-height: 550px;
+    margin: 0;
+    padding: 2px;
+    li:hover {
+      background-color: #ccc;
+    }
+  }
+  ul::-webkit-scrollbar {
+    display: none;
+  }
+  a {
+    text-decoration: 0;
+    color: #f59a23;
+    &:visited {
+      @extend a;
+    }
+  }
+}

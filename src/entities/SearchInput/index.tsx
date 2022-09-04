@@ -18,6 +18,7 @@ const SearchInput: FC = () => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.currentTarget.value);
   };
+
   useEffect(() => {
     const timer = setTimeout(() => {
       if (value) {
@@ -41,7 +42,7 @@ const SearchInput: FC = () => {
         setVisible(true);
       }}>
       <input className={style.searchInput} onChange={handleChange} placeholder="  Search..." />
-      {visible && results.length > 0 && <SearchResultsList data={results} type={type} />}
+      {visible && results && results.length > 0 && <SearchResultsList data={results} type={type} />}
     </div>
   );
 };

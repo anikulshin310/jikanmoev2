@@ -15,6 +15,7 @@ import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import style from './TypeContent.module.scss';
 import TypeContentItem from './TypeContentItem';
 import LoadingLine from '../../components/LoadingLine';
+import { IItem } from '../../store/slices/searchSlice';
 
 const TypeContent: FC = () => {
   const location = useLocation();
@@ -54,7 +55,7 @@ const TypeContent: FC = () => {
   return (
     <div className={style.TypeContent}>
       {results.length > 0 &&
-        results.map((item: any) => (
+        results.map((item: IItem) => (
           <TypeContentItem key={`${item.mal_id}-${item.title}`} item={item} type={type} />
         ))}
       {loading === 'loading' ? <LoadingLine /> : null}

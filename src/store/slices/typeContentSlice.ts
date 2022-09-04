@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import type { RootState } from '../store';
 
 export const searchTypeTop = createAsyncThunk('searchTop', async (query: string, thunkAPI) => {
   const response = await axios.get(query);
@@ -59,11 +60,11 @@ export const typeContentSlice = createSlice({
   },
 });
 
-export const selectTopResults = (state: any) => state.typeContent.resultsTop;
-export const selectTopType = (state: any) => state.typeContent.type;
-export const selectHasNextPage = (state: any) => state.typeContent.hasNextPage;
-export const selectPage = (state: any) => state.typeContent.page;
-export const selectLoading = (state: any) => state.typeContent.loading;
+export const selectTopResults = (state: RootState) => state.typeContent.resultsTop;
+export const selectTopType = (state: RootState) => state.typeContent.type;
+export const selectHasNextPage = (state: RootState) => state.typeContent.hasNextPage;
+export const selectPage = (state: RootState) => state.typeContent.page;
+export const selectLoading = (state: RootState) => state.typeContent.loading;
 export const { loadMore, clear } = typeContentSlice.actions;
 
 export default typeContentSlice.reducer;

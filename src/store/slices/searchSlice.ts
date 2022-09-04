@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import type { RootState } from '../store';
 
 export const searchByName = createAsyncThunk('searchByName', async (query: string, thunkAPI) => {
   const response = await axios.get(query);
@@ -9,8 +10,25 @@ export const searchByName = createAsyncThunk('searchByName', async (query: strin
 interface IInitialState {
   loading: string;
   error: null | string | undefined;
-  results: [];
+  results: IItem[] | null;
   visible: boolean;
+}
+export interface IItem {
+  url: string;
+  mal_id: number;
+  title: string;
+  images: {
+    jpg: {
+      image_url: string;
+      small_image_url: string;
+    };
+  };
+  type: string;
+  year: number;
+  status: string;
+  genres: [];
+  synopsis: string;
+  score: number;
 }
 
 export const searchSlice = createSlice({
@@ -18,7 +36,7 @@ export const searchSlice = createSlice({
   initialState: {
     loading: 'idle',
     error: null,
-    results: [],
+    results: null,
   } as IInitialState,
   reducers: {
     changeVisible: (state, action) => {
@@ -43,7 +61,6 @@ export const searchSlice = createSlice({
   },
 });
 
-export const selectResults = (state: any) => state.search.results;
-export const selectType = (state: any) => state.search.type;
+export const selectResults = (state: RootState) => state.search.results;
 
 export default searchSlice.reducer;

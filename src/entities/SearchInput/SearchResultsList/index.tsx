@@ -2,25 +2,11 @@ import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 import style from './SearchResultsList.module.scss';
 import SearchResultsListItem from './SearchResultItem';
+import { IItem } from '../../../store/slices/searchSlice';
 
 export interface ISearchResultsList {
   type: string;
-  data: [
-    {
-      url: string;
-      mal_id: number;
-      title: string;
-      images: {
-        jpg: {
-          image_url: string;
-          small_image_url: string;
-        };
-      };
-      type: string;
-      year: number;
-      status: string;
-    }
-  ];
+  data: IItem[];
 }
 
 const SearchResultsList: FC<ISearchResultsList> = ({ data, type }) => {

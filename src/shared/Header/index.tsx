@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import Button from '../../components/Button';
+import Login from '../../entities/Login';
 import SearchInput from '../../entities/SearchInput';
 
 import style from './Header.module.scss';
@@ -13,6 +14,7 @@ const Header: FC = () => {
           <Button text="manga" />
         </div>
         <SearchInput />
+        <Login />
       </div>
     </div>
   );

@@ -3,12 +3,14 @@ import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import typeContentReducer from './slices/typeContentSlice';
 import searchReducer from './slices/searchSlice';
 import titleContentReducer from './slices/titleContentSlice';
+import userReducer from './slices/userSlice';
 
 export const store = configureStore({
   reducer: {
     search: searchReducer,
     typeContent: typeContentReducer,
     titleContent: titleContentReducer,
+    user: userReducer,
   },
 });
 

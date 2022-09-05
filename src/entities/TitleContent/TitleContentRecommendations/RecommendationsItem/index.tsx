@@ -1,17 +1,20 @@
 import React, { FC } from 'react';
+import style from './RecommendationsItem.module.scss';
 
-interface IRecommendationItem {
-  mal_id: number;
+interface IRecommendationsItem {
   title: string;
   image_url: string;
 }
-const RecommendationsItem: FC<IRecommendationItem> = ({
-  mal_id,
+const RecommendationsItem: FC<IRecommendationsItem> = ({
   title,
 
   image_url,
 }) => {
-  return <div>{mal_id}</div>;
+  return (
+    <div className={style.RecommendationsItem}>
+      <img src={image_url} alt={title} />
+    </div>
+  );
 };
 
 export default RecommendationsItem;

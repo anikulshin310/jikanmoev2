@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { ITitleContentRecommendations } from '../../entities/TitleContent/TitleContentRecommendations';
+import { IRecommendationItem } from '../../entities/TitleContent/TitleContentRecommendations';
 import type { RootState } from '../store';
 import type { IItem } from './searchSlice';
 
@@ -22,11 +22,11 @@ interface IInitialState {
   loading: string;
   error: null | string | undefined;
   result: IItem | null;
-  recommendations: ITitleContentRecommendations | null;
+  recommendations: IRecommendationItem[] | null;
 }
 
 export const titleContentSlice = createSlice({
-  name: 'typeContent',
+  name: 'titleContent',
   initialState: {
     loading: 'loading',
     error: null,

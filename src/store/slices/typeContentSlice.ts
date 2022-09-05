@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import type { RootState } from '../store';
+import { IItem } from './searchSlice';
 
 export const searchTypeTop = createAsyncThunk('searchTop', async (query: string, thunkAPI) => {
   const response = await axios.get(query);
@@ -11,7 +12,7 @@ export const searchTypeTop = createAsyncThunk('searchTop', async (query: string,
 interface IInitialState {
   loading: string;
   error: null | string | undefined;
-  resultsTop: any;
+  resultsTop: IItem[] | null;
   type: string;
   page: number;
   hasNextPage: boolean;
@@ -22,7 +23,7 @@ export const typeContentSlice = createSlice({
   initialState: {
     loading: 'loading',
     error: null,
-    resultsTop: [],
+    resultsTop: null,
     page: 1,
     hasNextPage: true,
   } as IInitialState,
@@ -46,7 +47,7 @@ export const typeContentSlice = createSlice({
       .addCase(searchTypeTop.fulfilled, (state, action) => {
         if (state.page === 1) {
           state.resultsTop = action.payload.data;
-        } else {
+        } else if (state.resultsTop) {
           state.resultsTop.push(...action.payload.data);
         }
         state.hasNextPage = action.payload.pagination.has_next_page;

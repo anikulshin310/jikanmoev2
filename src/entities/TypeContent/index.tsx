@@ -54,7 +54,8 @@ const TypeContent: FC = () => {
 
   return (
     <div className={style.TypeContent}>
-      {results.length > 0 &&
+      {results &&
+        results.length > 0 &&
         results.map((item: IItem) => (
           <TypeContentItem key={`${item.mal_id}-${item.title}`} item={item} type={type} />
         ))}

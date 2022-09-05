@@ -53,7 +53,9 @@ const TitleContent: FC = () => {
             <TitleContentSynopsis synopsis={result.synopsis} />
           </div>
           <TitleContentScore score={result.score} />
-          {recommendations ? <TitleContentRecommendations items={recommendations} /> : null}
+          {recommendations ? (
+            <TitleContentRecommendations recommendations={recommendations} />
+          ) : null}
         </>
       )}
     </div>

@@ -12,7 +12,6 @@ function App() {
         <Route path="/" element={<Navigate to="/anime" />} />
         <Route path="/anime" element={<TypeContent />} />
         <Route path="/anime/:mal_id" element={<TitleContent />} />
-
         <Route path="/manga" element={<TypeContent />} />
         <Route path="/manga/:mal_id" element={<TitleContent />} />
       </Routes>

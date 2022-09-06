@@ -33,7 +33,11 @@ const Login: FC = () => {
           <circle cx="12" cy="7" r="4" />
         </svg>
       </button>
-      {isModal ? <Modal /> : null}
+      {isModal ? (
+        <div ref={ref}>
+          <Modal />
+        </div>
+      ) : null}
     </div>
   );
 };

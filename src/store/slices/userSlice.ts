@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { config } from 'process';
+
 import type { RootState } from '../store';
 
 export const userLogin = createAsyncThunk('login', async (query: string, thunkAPI) => {
@@ -56,5 +56,6 @@ export const userSlice = createSlice({
   },
 });
 export const userSelector = (state: RootState) => state.user.user;
+export const userErrorSelector = (state: RootState) => state.user.error;
 export const { logout } = userSlice.actions;
 export default userSlice.reducer;

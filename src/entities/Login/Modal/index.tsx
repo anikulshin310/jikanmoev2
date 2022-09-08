@@ -5,6 +5,7 @@ import {
   logout,
   userErrorSelector,
   userLogin,
+  userRegister,
   userSelector,
 } from '../../../store/slices/userSlice';
 import LoginForm from './LoginForm';
@@ -16,11 +17,27 @@ const Modal: FC = () => {
   const error = useAppSelector(userErrorSelector);
   const [userName, setUserName] = useState<string>();
   const [userPassword, setUserPassword] = useState<string>();
+  const [firstName, setFirstName] = useState<string>();
+  const [lastName, setLastName] = useState<string>();
   const [loginMode, setLoginMode] = useState<string>('SignIn');
   const handleLoginSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(userName);
     dispatch(userLogin(JSON.stringify({ username: userName, password: userPassword })));
+  };
+  const handleRegisterSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    dispatch(
+      userRegister(
+        JSON.stringify({
+          fname: firstName,
+          lname: lastName,
+          username: userName,
+          password: userPassword,
+          email: userName,
+          avatar: 'https://www.melivecode.com/users/cat.png',
+        })
+      )
+    );
   };
 
   return (
@@ -46,9 +63,11 @@ const Modal: FC = () => {
       )}
       {!user && loginMode === 'SignUp' && (
         <LoginForm
-          handleSubmit={handleLoginSubmit}
+          handleSubmit={handleRegisterSubmit}
           setUserName={setUserName}
           setUserPassword={setUserPassword}
+          setFirstName={setFirstName}
+          setLastName={setLastName}
           type="register"
           error={error}
         />

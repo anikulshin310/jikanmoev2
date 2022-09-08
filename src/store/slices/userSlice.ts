@@ -9,9 +9,18 @@ export const userLogin = createAsyncThunk('login', async (query: string, thunkAP
       'Content-Type': 'application/json',
     },
   });
-  console.log(response);
   return response.data;
 });
+export const userRegister = createAsyncThunk('register', async (query: string, thunkAPI) => {
+  const response = await axios.post('https://www.mecallapi.com/api/users/create', query, {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
+  return response.data;
+});
+
 interface IUser {
   id: number;
   fname: string;
@@ -51,6 +60,21 @@ export const userSlice = createSlice({
       })
       .addCase(userLogin.rejected, (state, action) => {
         state.loading = 'failed';
+        state.error = action.error.message;
+      })
+      .addCase(userRegister.pending, (state) => {
+        state.loading = 'loading';
+      })
+      .addCase(userRegister.fulfilled, (state, action) => {
+        state.loading = 'idle';
+
+        if (action.payload.status === 'error') {
+          state.error = 'User with this E-mail adress already exists';
+        }
+      })
+      .addCase(userRegister.rejected, (state, action) => {
+        state.loading = 'failed';
+
         state.error = action.error.message;
       });
   },

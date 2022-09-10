@@ -1,9 +1,15 @@
 .modal_wpapper {
   position: absolute;
+  width: 239px;
   z-index: 6;
   background: #2f2f2f;
   border: 1px solid #ffb34e;
-  right: 25px;
+  right: 0px;
   top: 60px;
   color: #f59a23;
+  button {
+    margin: 4px;
+    color: #2f2f2f;
+    background-color: #ffb34e;
+  }
 }

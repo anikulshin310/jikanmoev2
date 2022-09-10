@@ -1,20 +1,25 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useState } from 'react';
 
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
+import {
+  registrationMessageSelector,
+  userRegistration,
+} from '../../../store/slices/registrationSlice';
 import {
   logout,
   userErrorSelector,
   userLogin,
-  userRegister,
   userSelector,
 } from '../../../store/slices/userSlice';
 import LoginForm from './LoginForm';
 import style from './Modal.module.scss';
+import UserMenu from './UserMenu';
 
 const Modal: FC = () => {
   const dispatch = useAppDispatch();
   const user = useAppSelector(userSelector);
   const error = useAppSelector(userErrorSelector);
+  const message = useAppSelector(registrationMessageSelector);
   const [userName, setUserName] = useState<string>();
   const [userPassword, setUserPassword] = useState<string>();
   const [firstName, setFirstName] = useState<string>();
@@ -27,7 +32,7 @@ const Modal: FC = () => {
   const handleRegisterSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     dispatch(
-      userRegister(
+      userRegistration(
         JSON.stringify({
           fname: firstName,
           lname: lastName,
@@ -45,10 +50,10 @@ const Modal: FC = () => {
       {!user && (
         <>
           <button type="button" onClick={() => setLoginMode('SignIn')}>
-            Sign in
+            sign in
           </button>
           <button type="button" onClick={() => setLoginMode('SignUp')}>
-            Sign up
+            sign up
           </button>
         </>
       )}
@@ -58,7 +63,7 @@ const Modal: FC = () => {
           setUserName={setUserName}
           setUserPassword={setUserPassword}
           type="login"
-          error={error}
+          message={error}
         />
       )}
       {!user && loginMode === 'SignUp' && (
@@ -68,22 +73,19 @@ const Modal: FC = () => {
           setUserPassword={setUserPassword}
           setFirstName={setFirstName}
           setLastName={setLastName}
-          type="register"
-          error={error}
+          type="registration"
+          message={message}
         />
       )}
       {user && (
-        <div>
-          <button
-            type="button"
-            onClick={() => {
-              dispatch(logout());
-              setUserName('');
-              setUserPassword('');
-            }}>
-            logout
-          </button>
-        </div>
+        <UserMenu
+          logout={() => {
+            dispatch(logout());
+            setUserName('');
+            setUserPassword('');
+          }}
+          userName={user.username}
+        />
       )}
     </div>
   );

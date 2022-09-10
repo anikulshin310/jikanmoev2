@@ -8,7 +8,7 @@ interface ILoginForm {
   setFirstName?: (value: React.SetStateAction<string | undefined>) => void;
   setLastName?: (value: React.SetStateAction<string | undefined>) => void;
   type: string;
-  error?: string | null;
+  message?: string | null;
 }
 const LoginForm: FC<ILoginForm> = ({
   handleSubmit,
@@ -17,7 +17,7 @@ const LoginForm: FC<ILoginForm> = ({
   setFirstName,
   setLastName,
   type,
-  error,
+  message,
 }) => {
   return (
     <>
@@ -26,7 +26,7 @@ const LoginForm: FC<ILoginForm> = ({
         <input onChange={(e) => setUserName(e.currentTarget.value)} type="email" required />
         <div className={style.item_name}>Password:</div>
         <input onChange={(e) => setUserPassword(e.currentTarget.value)} type="password" required />
-        {type === 'register' && (
+        {type === 'registration' && (
           <>
             <div className={style.item_name}>First name:</div>
             <input onChange={(e) => setFirstName!(e.currentTarget.value)} required />
@@ -37,7 +37,7 @@ const LoginForm: FC<ILoginForm> = ({
 
         <button type="submit">{type}</button>
       </form>
-      {error && error}
+      {message && <div className={style.message}>{message}</div>}
     </>
   );
 };

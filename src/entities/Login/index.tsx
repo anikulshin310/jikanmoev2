@@ -19,7 +19,7 @@ const Login: FC = () => {
     };
   }, [isModal]);
   return (
-    <div className={style.Login}>
+    <div ref={ref} className={style.Login}>
       <button type="button" onClick={() => setIsModal(!isModal)}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -33,11 +33,7 @@ const Login: FC = () => {
           <circle cx="12" cy="7" r="4" />
         </svg>
       </button>
-      {isModal ? (
-        <div ref={ref}>
-          <Modal />
-        </div>
-      ) : null}
+      {isModal ? <Modal /> : null}
     </div>
   );
 };

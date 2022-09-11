@@ -2,6 +2,7 @@ import React, { FC, useState } from 'react';
 
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import {
+  clear,
   registrationMessageSelector,
   userRegistration,
 } from '../../../store/slices/registrationSlice';
@@ -83,8 +84,9 @@ const Modal: FC = () => {
             dispatch(logout());
             setUserName('');
             setUserPassword('');
+            dispatch(clear());
           }}
-          userName={user.username}
+          userId={user.id}
         />
       )}
     </div>

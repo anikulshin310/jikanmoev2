@@ -14,6 +14,7 @@ function App() {
         <Route path="/anime/:mal_id" element={<TitleContent />} />
         <Route path="/manga" element={<TypeContent />} />
         <Route path="/manga/:mal_id" element={<TitleContent />} />
+        <Route path="/user:id" element={<div>profile</div>} />
       </Routes>
     </PageLayout>
   );

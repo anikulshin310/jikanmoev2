@@ -16,6 +16,7 @@ import style from './TypeContent.module.scss';
 import TypeContentItem from './TypeContentItem';
 import LoadingLine from '../../components/LoadingLine';
 import { IItem } from '../../store/slices/searchSlice';
+import { changeType } from '../../store/slices/userSlice';
 
 const TypeContent: FC = () => {
   const location = useLocation();
@@ -26,6 +27,7 @@ const TypeContent: FC = () => {
   const hasNextPage = useAppSelector(selectHasNextPage);
   const loading = useAppSelector(selectLoading);
   useEffect(() => {
+    dispatch(changeType(type));
     dispatch(clear());
     dispatch(searchTypeTop(getTop(type, 1)));
   }, [location]);

@@ -1,0 +1,14 @@
+.FavoritesIcon {
+  position: absolute;
+  left: 7px;
+  top: 7px;
+
+  svg {
+    fill: #ffb34e;
+    width: 40px;
+  }
+  svg:hover {
+    width: 45px;
+    transition: 200ms;
+  }
+}

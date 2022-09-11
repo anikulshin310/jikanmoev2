@@ -4,6 +4,7 @@ import typeContentReducer from './slices/typeContentSlice';
 import searchReducer from './slices/searchSlice';
 import titleContentReducer from './slices/titleContentSlice';
 import userReducer from './slices/userSlice';
+
 import registrationReducer from './slices/registrationSlice';
 
 export const store = configureStore({

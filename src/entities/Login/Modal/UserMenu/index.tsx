@@ -10,7 +10,6 @@ interface IUserMenu {
 const UserMenu: FC<IUserMenu> = ({ logout, userId }) => {
   return (
     <div className={style.UserMenu}>
-      {' '}
       <Link to={`/user/${userId}`}>
         <button type="button">Profile</button>
       </Link>

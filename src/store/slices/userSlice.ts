@@ -12,7 +12,7 @@ export const userLogin = createAsyncThunk('login', async (query: string, thunkAP
   return response.data;
 });
 
-interface IUser {
+export interface IUser {
   id: number;
   fname: string;
   lname: string;
@@ -45,6 +45,7 @@ export const userSlice = createSlice({
   } as IInitialState,
   reducers: {
     logout: (state) => {
+      state.user = null;
       state.favorites.manga = [];
       state.favorites.anime = [];
     },

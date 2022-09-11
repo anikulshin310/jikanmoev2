@@ -45,6 +45,7 @@ const Modal: FC = () => {
       )
     );
   };
+  const handleUserSave = () => {};
 
   return (
     <div className={style.modal_wpapper}>

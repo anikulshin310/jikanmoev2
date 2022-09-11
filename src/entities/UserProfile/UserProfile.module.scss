@@ -1,0 +1,12 @@
+.profileWrapper {
+  display: flex;
+  .userFavorites {
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
+    a {
+      text-decoration: none;
+      color: black;
+    }
+  }
+}

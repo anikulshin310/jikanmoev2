@@ -37,7 +37,7 @@ const UserProfile: FC = () => {
             <Link
               key={item.mal_id + item.title}
               className={style.listItem}
-              to={`/anime/${item.mal_id}`}>
+              to={`/manga/${item.mal_id}`}>
               <li>{item.title}</li>
             </Link>
           ))}

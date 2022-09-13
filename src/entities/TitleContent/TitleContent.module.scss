@@ -6,10 +6,9 @@
 
   .TitleContentInner {
     display: flex;
+    flex-wrap:wrap;
     background-color: #f2f2f2;
-    .favorites {
-     
-    }
+ 
   }
 }
 

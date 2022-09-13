@@ -3,18 +3,15 @@ import axios from 'axios';
 
 import type { RootState } from '../store';
 
-export const userRegistration = createAsyncThunk(
-  'registration',
-  async (query: string, thunkAPI) => {
-    const response = await axios.post('https://www.mecallapi.com/api/users/create', query, {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+export const userRegistration = createAsyncThunk('registration', async (query: string) => {
+  const response = await axios.post('https://www.mecallapi.com/api/users/create', query, {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
 
-    return response.data;
-  }
-);
+  return response.data;
+});
 
 interface IInitialState {
   loading: string;

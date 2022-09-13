@@ -4,20 +4,25 @@ import { IRecommendationItem } from '../../entities/TitleContent/TitleContentRec
 import type { RootState } from '../store';
 import type { IItem } from './searchSlice';
 
-export const searchTitle = createAsyncThunk('searchTitle', async (query: string, thunkAPI) => {
+export const searchTitle = createAsyncThunk('searchTitle', async (query: string) => {
   const response = await axios.get(query);
 
-  return response.data;
+  return response.data as IResponseData;
 });
 export const searchRecommendations = createAsyncThunk(
   'titleRecommendations',
-  async (query: string, thunkAPI) => {
+  async (query: string) => {
     const response = await axios.get(query);
 
     return response.data;
   }
 );
-
+interface IResponseData {
+  data: IItem;
+}
+interface IResponseDataRec {
+  data: IItem[];
+}
 interface IInitialState {
   loading: string;
   error: null | string | undefined;

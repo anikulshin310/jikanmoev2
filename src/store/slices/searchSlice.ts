@@ -1,12 +1,15 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
 import type { RootState } from '../store';
 
-export const searchByName = createAsyncThunk('searchByName', async (query: string, thunkAPI) => {
+export const searchByName = createAsyncThunk('searchByName', async (query: string) => {
   const response = await axios.get(query);
-  return response.data;
+  return response.data as IResponseData;
 });
 
+interface IResponseData {
+  data: IItem[];
+}
 interface IInitialState {
   loading: string;
   error: null | string | undefined;
@@ -39,7 +42,7 @@ export const searchSlice = createSlice({
     results: null,
   } as IInitialState,
   reducers: {
-    changeVisible: (state, action) => {
+    changeVisible: (state, action: PayloadAction<boolean>) => {
       state.visible = action.payload;
     },
   },

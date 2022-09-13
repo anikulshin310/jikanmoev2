@@ -1,9 +1,9 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
 import type { RootState } from '../store';
 import { IItem } from './searchSlice';
 
-export const userLogin = createAsyncThunk('login', async (query: string, thunkAPI) => {
+export const userLogin = createAsyncThunk('login', async (query: string) => {
   const response = await axios.post('https://www.mecallapi.com/api/login', query, {
     headers: {
       'Content-Type': 'application/json',
@@ -13,6 +13,7 @@ export const userLogin = createAsyncThunk('login', async (query: string, thunkAP
 });
 
 export interface IUser {
+  user: IUser;
   id: number;
   fname: string;
   lname: string;
@@ -49,15 +50,15 @@ export const userSlice = createSlice({
       state.favorites.manga = [];
       state.favorites.anime = [];
     },
-    changeType: (state, action) => {
+    changeType: (state, action: PayloadAction<string>) => {
       state.type = action.payload;
     },
-    addToFavorites: (state, action) => {
+    addToFavorites: (state, action: PayloadAction<IItem>) => {
       if (state.user) {
         state.favorites[state.type].push(action.payload);
       }
     },
-    deleteFromFavorites: (state, action) => {
+    deleteFromFavorites: (state, action: PayloadAction<IItem>) => {
       if (state.user) {
         const itemToDelete = state.favorites[state.type].findIndex(
           (item) => item.mal_id === action.payload.mal_id
@@ -72,7 +73,7 @@ export const userSlice = createSlice({
         state.loading = 'loading';
         state.error = null;
       })
-      .addCase(userLogin.fulfilled, (state, action) => {
+      .addCase(userLogin.fulfilled, (state, action: PayloadAction<IUser>) => {
         state.loading = 'idle';
         state.user = action.payload.user;
         state.error = null;

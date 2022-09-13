@@ -25,7 +25,7 @@ const TypeContentItem: React.FC<ITypeContentItem> = ({ item, type }) => {
     <div key={item.mal_id} className={style.TypeContentItem}>
       <Link to={`/${type}/${item.mal_id}`}>
         <img src={item.images.jpg.image_url} alt={item.title} />
-        <div className={style.TypeContentItemTitle}>{item.title}</div>{' '}
+        <div className={style.TypeContentItemTitle}>{item.title}</div>
       </Link>
     </div>
   );

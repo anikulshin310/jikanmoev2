@@ -6,26 +6,11 @@
 
   .TitleContentInner {
     display: flex;
-    flex-wrap:wrap;
     background-color: #f2f2f2;
- 
-  }
-}
-
-@media (min-width: 768px) {
-  .TitleContent {
-    width: 750px;
-  }
-}
-
-@media (min-width: 992px) {
-  .TitleContent {
-    width: 970px;
-  }
-}
-
-@media (min-width: 1200px) {
-  .TitleContent {
-    width: 1170px;
+    .ContentFirst {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
   }
 }

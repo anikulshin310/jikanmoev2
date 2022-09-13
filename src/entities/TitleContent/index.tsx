@@ -61,19 +61,23 @@ const TitleContent: FC = () => {
           <TitleContentTitle title={result.title} />
 
           <div className={style.TitleContentInner}>
-            {user && (
-              <FavoritesIcon
-                inFavorites={inFavorites}
-                onAdd={() => dispatch(addToFavorites(result))}
-                onDelete={() => dispatch(deleteFromFavorites(result))}
-              />
-            )}
-            <TitleContentImage image_url={result.images.jpg.image_url} title={result.title} />
-            <TitleContentGenres genres={result.genres} />
-            <TitleContentSynopsis synopsis={result.synopsis} />
+            <div className={style.ContentFirst}>
+              {user && (
+                <FavoritesIcon
+                  inFavorites={inFavorites}
+                  onAdd={() => dispatch(addToFavorites(result))}
+                  onDelete={() => dispatch(deleteFromFavorites(result))}
+                />
+              )}
+              <TitleContentImage image_url={result.images.jpg.image_url} title={result.title} />
+              <TitleContentScore score={result.score} />
+            </div>
+            <div>
+              <TitleContentGenres genres={result.genres} />
+              <TitleContentSynopsis synopsis={result.synopsis} />
+            </div>
           </div>
 
-          <TitleContentScore score={result.score} />
           {recommendations && recommendations.length > 0 ? (
             <TitleContentRecommendations recommendations={recommendations} />
           ) : null}
